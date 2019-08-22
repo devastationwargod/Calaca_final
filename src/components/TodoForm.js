@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import ControlledCarousel from './carousel';
+import React, { Component } from "react";
+import ControlledCarousel from "./carousel";
+import Form from 'react-bootstrap/Form';
 
 class TodoForm extends Component {
-  constructor () {
+  constructor() {
     super();
     this.state = {
-      CURSO1: '',
-      CURSO2: '',
-      CURSO3: '',
-      HORARIO: 'MATUTINO'
+      cabeza: 0,
+      cuerpo: 0,
+      pies: 0
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,74 +18,57 @@ class TodoForm extends Component {
     e.preventDefault();
     this.props.onAddTodo(this.state);
     this.setState({
-      curso: '',
-      curso: '',
-      curso: '',
-      HORARIO: 'MATUTINO'
+      curso: "",
+      curso: "",
+      curso: "",
+      HORARIO: "MATUTINO"
     });
   }
 
-  handleInputChange(e) {
-    const {value, name} = e.target;
+  handleInputChange(e,index) {
+    const { value, name } = e.target;
     console.log(value, name);
     this.setState({
-      [name]: value
+      [index]: value
     });
-  } 
+  }
 
   render() {
     return (
       <div className="card">
-        <form onSubmit={this.handleSubmit} className="card-body">
-        <p>Selecciona tu curso</p>
-        
-          <div className="form-group">
-          <select
-              name="curso1"
-              className="form-control"
-              value={this.state.curso1}
-              onChange={this.handleInputChange}
-            >
-            <option>fotografia</option>
-            <option>Guitarra</option>
-            <option>cartoneria</option>
-          </select>
-        </div>
-          <div className="form-group">
-          <select
-              name="curso2"
-              className="form-control"
-              value={this.state.curso2}
-              onChange={this.handleInputChange}
-            >
-            <option>fotografia</option>
-            <option>Guitarra</option>
-            <option>cartoneria</option>
-          </select>
-        </div>
-          <div className="form-group">
-            <select
-                name="curso3"
-                className="form-control"
-                value={this.state.curso3}
-                onChange={this.handleInputChange}
-              >
-              <option>fotografia</option>
-              <option>Guitarra</option>
-              <option>cartoneria</option>
-            </select>
-          </div>
+        <Form onSubmit={this.handleSubmit} className="card-body">
+          <p>Selecciona tu curso</p>
+          
+          <Form.Group controlId="exampleForm.ControlSelect1">
+            <Form.Label>Example select</Form.Label>
+            <Form.Control onChange={(e)=>this.handleInputChange(e,"cabeza")} as="select" >
+              <option value={0}>guitarra</option>
+              <option value={1}>fotografía</option>
+              <option value={2}>cartonería</option>
+            </Form.Control>
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlSelect1">
+            <Form.Label>Example select</Form.Label>
+            <Form.Control onChange={(e)=>this.handleInputChange(e,"cuerpo")} as="select" >
+              <option>1v</option>
+            </Form.Control>
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlSelect1">
+            <Form.Label>Example select</Form.Label>
+            <Form.Control onChange={(e)=>this.handleInputChange(e,"pies")} as="select" >
+            <option>1</option>
+            </Form.Control>
+          </Form.Group>
           <button type="submit" className="btn btn-primary">
             Save
           </button>
-        </form>
-        <ControlledCarousel/>
+        </Form>
+        <ControlledCarousel activeIndex={this.state.cabeza} />
+        <ControlledCarousel activeIndex={this.state.cuerpo} />
+        <ControlledCarousel activeIndex={this.state.pies} />
       </div>
-    
-      
-    )
+    );
   }
-
 }
 
 export default TodoForm;
