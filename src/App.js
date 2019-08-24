@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import ControlledCarousel from './components/carousel';
+
+
 
 // data
-import { todos } from './todos.json';
+import { todos } from './cursos.json';
 
 // subcomponents
 import TodoForm from './components/TodoForm';
@@ -54,6 +55,7 @@ class App extends Component {
   }
 
   render() {
+    const cursos = this.state.todos;
     const todos = this.state.todos.map((todo, i) => {
       return (
         <div className="col-md-4" key={i}>
@@ -80,7 +82,7 @@ class App extends Component {
            </div>
           </div>
         </div>
-      )
+      )  
     });
 
     // RETURN THE COMPONENT
@@ -101,7 +103,7 @@ class App extends Component {
 
             <div className="col-md-6 text-center">
                 <img src={logo} className="App-logo" alt="logo" />
-              <TodoForm onAddTodo={this.handleAddTodo}></TodoForm>
+              <TodoForm onAddTodo={this.handleAddTodo} cursos={cursos}></TodoForm>
             </div>
 
             <div className="col-md-6">
