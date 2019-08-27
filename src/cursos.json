@@ -4,7 +4,7 @@
       "curso":"fotografía",
       "title": "FOTOGRAFIA",
       "responsible": "Juan",
-      "description": "",
+      "description": "Fotografía para principiantes//Duración:30 hrs.//Instructor:Juan Perez//Fecha inicio:01 Septiembre",
       "type":"cabeza",
       "imagen":"images/foto.png"
     },
@@ -13,7 +13,7 @@
       "curso":"guitarra",
       "title": "GUITARRA",
       "responsible": "Lorena",
-      "description": "",
+      "description": "Duración:30 hrs.//Instructor:Pedro Perez//Fecha inicio:01 Septiembre",
       "type":"torso",
       "imagen":"images/guitarra.png"
     },
@@ -21,7 +21,7 @@
       "curso":"cartoneria",
       "title": "CARTONERIA",
       "responsible": "Julia",
-      "description": "",
+      "description": "Duración:30 hrs.//Instructor:Luis Perez//Fecha inicio:01 Septiembre",
       "type":"pies",
      "imagen": "images/cartoneria.png"
 
