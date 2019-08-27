@@ -62,25 +62,18 @@ class TodoForm extends Component {
     // en el arreglo "descriptions" se almacena el mapeo de los cursos
     const descriptions = this.props.cursos.map(curso => {
       return (
-        // <Modal show={this.state.modalShown === curso.curso}>
-        //   <h1>{curso.title}</h1>
-        //   {curso.description}
-        //   {curso.responsible}
-        // </Modal>
-  <Modal show={this.state.modalShown === curso.curso}>
-  
-  <Modal.Body>
+    <Modal show={this.state.modalShown === curso.curso}>
+    <Modal.Title>{curso.title}</Modal.Title>
+    <Modal.Body>
     <p>
     {curso.description}
-    {curso.responsible}
     </p>
-    
-  </Modal.Body>
-  <Modal.Footer>
+    </Modal.Body>
+    <Modal.Footer>
     <Button variant="secondary" onClick={()=>this.handleClick("")}>Close</Button>
-  </Modal.Footer>
-</Modal>
-      );
+    </Modal.Footer>
+    </Modal>
+   );
     });
 
     return (
