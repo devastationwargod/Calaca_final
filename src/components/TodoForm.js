@@ -44,25 +44,25 @@ class TodoForm extends Component {
 
   render() {
     const cabezas = this.props.cursos.filter(function(curso) {
-      return curso.type === "cabeza";
+      return curso.tipo === "cabeza";
     });
     const optionsHead = cabezas.map(function(cabeza, index) {
-      return <option value={index}>{cabeza.curso}</option>;
+      return <option value={index}>{cabeza.title}</option>;
     });
 
     const torsos = this.props.cursos.filter(function(curso) {
-      return curso.type === "torso";
+      return curso.tipo === "torso";
     });
     const optionsBody = torsos.map(function(torso, index) {
-      return <option value={index}>{torso.curso}</option>;
+      return <option value={index}>{torso.title}</option>;
     });
 
     const pies = this.props.cursos.filter(function(curso) {
-      return curso.type === "pies";
+      return curso.tipo === "pies";
     });
 
     const optionsFeet = pies.map(function(pies, index) {
-      return <option value={index}>{pies.curso}</option>;
+      return <option value={index}>{pies.title}</option>;
     });
     // en el arreglo "descriptions" se almacena el mapeo de los cursos
     const descriptions = this.props.cursos.map(curso => {
@@ -138,9 +138,9 @@ class TodoForm extends Component {
           </Button>
 
         </Form>
-        <ControlledCarousel activeIndex={this.state.cabeza} />
-        <ControlledCarousel activeIndex={this.state.cuerpo} />
-        <ControlledCarousel activeIndex={this.state.pies} />
+        <ControlledCarousel activeIndex={this.state.cabeza} cursos={cabezas} />
+        <ControlledCarousel activeIndex={this.state.cuerpo} cursos={torsos} />
+        <ControlledCarousel activeIndex={this.state.pies} cursos={pies} />
       </div>
     );
   }
