@@ -56,35 +56,6 @@ class App extends Component {
 
   render() {
     const cursos = this.state.todos;
-    const todos = this.state.todos.map((todo, i) => {
-      return (
-        <div className="col-md-4" key={i}>
-          <div className="card mt-4">
-            <div className="card-title text-center">
-              <h3>{todo.title}</h3>
-              <span className="badge badge-pill badge-danger ml-2">
-                {todo.curso1}
-              </span>
-              <span className="badge badge-pill badge-danger ml-4">
-                {todo.curso2}
-              </span>
-              <span className="badge badge-pill badge-danger md-8">
-                {todo.curso3}
-              </span>
-            </div>
-            <div className="card-body">
-              {todo.responsible}
-            </div>
-            <div className="card-footer">
-            <button>
-            <a href={todo.title} target="_blank" >Descripción </a>
-           </button>
-           </div>
-          </div>
-        </div>
-      )  
-    });
-
     // RETURN THE COMPONENT
     return (
       <div className="App">
@@ -108,7 +79,7 @@ class App extends Component {
 
             <div className="col-md-6">
               <div className="row">
-                {todos}
+                {}
               </div>
             </div>
           </div>
