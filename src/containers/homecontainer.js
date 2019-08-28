@@ -8,7 +8,7 @@ class HomeContainer extends Component {
     };
 
     componentDidMount = () => {
-        axios.get('https://swapi.co/api/people/').then(response => {
+        axios.get('http://f14b8fae.ngrok.io/api/note/').then(response => {
             this.setState({cursos: response.data.results})
         });
     }

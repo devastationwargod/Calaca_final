@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import axios from 'axios'
 
 
 // data
-import { todos } from './cursos.json';
+//import { todos } from './cursos.json';
 
 // subcomponents
 import TodoForm from './components/TodoForm';
@@ -14,11 +14,18 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      todos
+      todos: []
     }
     this.handleAddTodo = this.handleAddTodo.bind(this);
   }
-  
+  componentDidMount = () => {
+    axios.get('http://localhost:8000/api/note/').then(response => {
+
+        this.setState({todos: response.data.objects})
+
+    
+    });
+}
   //removeTodo(index) {
    // this.setState({
      // todos: this.state.todos.filter((e, i) => {
