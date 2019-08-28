@@ -52,7 +52,7 @@ class App extends Component {
     this.setState({
       todos: [...this.state.todos, todo]
     })
-  }
+  } 
 
   render() {
     const cursos = this.state.todos;

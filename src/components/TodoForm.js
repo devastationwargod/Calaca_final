@@ -2,18 +2,27 @@ import React, { Component } from "react";
 import ControlledCarousel from "./carousel";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 class TodoForm extends Component {
   constructor() {
     super();
     this.state = {
       cabeza: 0,
-      cuerpo: 0,
-      pie: 0
+      torso: 0,
+      pies: 0,
+      modalShown: " "
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  handleClick = (curso)=> {
+    this.setState({
+      modalShown: curso,
+      
+    });
+  };
 
   handleSubmit(e) {
     e.preventDefault();
@@ -32,24 +41,44 @@ class TodoForm extends Component {
     const cabezas = this.props.cursos.filter(function(curso) {
       return curso.type === "cabeza";
     });
-     const optionsHead = cabezas.map(function(cabeza, index) {
+    const optionsHead = cabezas.map(function(cabeza, index) {
       return <option value={index}>{cabeza.curso}</option>;
     });
 
     const torsos = this.props.cursos.filter(function(curso) {
-        return curso.type === "torso";
-      }).map(function(torso, index) {
-        return <option value={index}>{torso.curso}</option>;
-      });
+      return curso.type === "torso";
+    });
+    const optionsBody = torsos.map(function(torso, index) {
+      return <option value={index}>{torso.curso}</option>;
+    });
 
     const pies = this.props.cursos.filter(function(curso) {
-        return curso.type === "pies";
-      }).map(function(pies, index) {
-        return <option value={index}>{pies.curso}</option>;
-      });
+      return curso.type === "pies";
+    });
+
+    const optionsFeet = pies.map(function(pies, index) {
+      return <option value={index}>{pies.curso}</option>;
+    });
+    // en el arreglo "descriptions" se almacena el mapeo de los cursos
+    const descriptions = this.props.cursos.map(curso => {
+      return (
+    <Modal show={this.state.modalShown === curso.curso}>
+    <Modal.Title>{curso.title}</Modal.Title>
+    <Modal.Body>
+    <p>
+    {curso.description}
+    </p>
+    </Modal.Body>
+    <Modal.Footer>
+    <Button variant="secondary" onClick={()=>this.handleClick("")}>Close</Button>
+    </Modal.Footer>
+    </Modal>
+   );
+    });
 
     return (
       <div className="card">
+        {descriptions}
         <Form onSubmit={this.handleSubmit} className="card-body">
           <p>Selecciona tu curso</p>
 
@@ -58,32 +87,49 @@ class TodoForm extends Component {
               onChange={e => this.handleInputChange(e, "cabeza")}
               as="select"
             >
-              {" "}
               {optionsHead}
             </Form.Control>
-            <Button onClick={()=>console.log(cabezas[this.state.cabeza])} variant="danger">Ver más</Button>
+            <Button
+              variant="danger"
+              onClick={()=>this.handleClick(cabezas[this.state.cabeza].curso)}
+            >
+              Detalles
+            </Button>
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlSelect1">
             <Form.Control
-              onChange={e => this.handleInputChange(e, "cuerpo")}
+              onChange={e => this.handleInputChange(e, "torso")}
               as="select"
             >
-              {torsos}
+              {""}
+              {optionsBody}
             </Form.Control>
-            <Button onClick={()=>console.log(torsos[this.state.cuerpo])} variant="danger">Ver más</Button>
+            <Button
+              variant="danger"
+              onClick={() => this.handleClick(torsos[this.state.torso].curso)}
+            >
+              Detalles
+            </Button>
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlSelect1">
             <Form.Control
               onChange={e => this.handleInputChange(e, "pies")}
               as="select"
             >
-              {pies}
+              {""}
+              {optionsFeet}
             </Form.Control>
-            <Button onClick={()=>console.log(pies[this.state.pie])} variant="danger">Ver más</Button>
+            <Button
+              onClick={()=>this.handleClick(pies[this.state.pies].curso)}
+              variant="danger"
+            >
+              Detalles
+            </Button>
           </Form.Group>
           <button type="submit" className="btn btn-primary">
             Confirmar
           </button>
+
         </Form>
         <ControlledCarousel activeIndex={this.state.cabeza} />
         <ControlledCarousel activeIndex={this.state.cuerpo} />
