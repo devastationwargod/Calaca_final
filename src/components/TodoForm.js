@@ -16,11 +16,16 @@ class TodoForm extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  confirmationButton=(index, curso)=>{
+    this.setState({
+      
+    });
+
+  };
 
   handleClick = (curso)=> {
     this.setState({
-      modalShown: curso,
-      
+      modalShown: curso,      
     });
   };
 
@@ -63,17 +68,19 @@ class TodoForm extends Component {
     const descriptions = this.props.cursos.map(curso => {
       return (
     <Modal show={this.state.modalShown === curso.curso}>
-    <Modal.Title>{curso.title}</Modal.Title>
+    <Modal.Header>
+      <Modal.Title>{curso.title}</Modal.Title>
+    </Modal.Header>
+  
     <Modal.Body>
-    <p>
-    {curso.description}
-    </p>
+    Aqui va la descripcion
     </Modal.Body>
+  
     <Modal.Footer>
-    <Button variant="secondary" onClick={()=>this.handleClick("")}>Close</Button>
+      <Button variant="danger" onClick={()=>this.handleClick("")}>Close</Button>
     </Modal.Footer>
-    </Modal>
-   );
+  </Modal>
+    );
     });
 
     return (
@@ -126,9 +133,9 @@ class TodoForm extends Component {
               Detalles
             </Button>
           </Form.Group>
-          <button type="submit" className="btn btn-primary">
+          <Button variant="success">
             Confirmar
-          </button>
+          </Button>
 
         </Form>
         <ControlledCarousel activeIndex={this.state.cabeza} />
