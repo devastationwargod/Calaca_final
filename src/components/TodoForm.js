@@ -131,9 +131,9 @@ class TodoForm extends Component {
           </button>
 
         </Form>
-        <ControlledCarousel activeIndex={this.state.cabeza} />
-        <ControlledCarousel activeIndex={this.state.cuerpo} />
-        <ControlledCarousel activeIndex={this.state.pies} />
+        <ControlledCarousel activeIndex={this.state.cabeza} cursos={cabezas} />
+        <ControlledCarousel activeIndex={this.state.cuerpo} cursos={torsos} />
+        <ControlledCarousel activeIndex={this.state.pies} cursos={pies} />
       </div>
     );
   }
