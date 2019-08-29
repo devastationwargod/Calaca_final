@@ -67,29 +67,16 @@ class App extends Component {
     return (
       <div className="App">
 
-        <nav className="navbar navbar-ligth bg-">
-          <a className="navbar-brand" href="/">
-            Cursos 
-            <span className="badge badge-pill badge-light ml-2">
-              {this.state.todos.length}
-            </span>
-          </a>
+        <nav className="navbar bg-warning" id="navlogo">
+        <div>
+        <img src={logo} className="App-logo" alt="logo" />
+        </div>
+        <div>
+        <h1><strong>Calaca A.C.</strong></h1>
+        </div>
         </nav>
-
-        <div className="container">
-          <div className="row mt-4">
-
-            <div className="col-md-6 text-center">
-                <img src={logo} className="App-logo" alt="logo" />
+        <div className="container text-center">
               <TodoForm onAddTodo={this.handleAddTodo} cursos={cursos}></TodoForm>
-            </div>
-
-            <div className="col-md-6">
-              <div className="row">
-                {}
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     );

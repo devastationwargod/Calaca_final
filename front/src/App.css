@@ -1,0 +1,24 @@
+.App{
+  background: black;
+}
+
+body{
+  background:#FFC107;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 120px;
+  background: #FFC107;
+  border-radius: 75%;
+  }
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+h5{
+  color: #FFC107;
+}
+

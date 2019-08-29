@@ -5,7 +5,7 @@ const images = require.context('../images', true);
 function ControlledCarousel(props) {
 return (
     <Carousel activeIndex={props.activeIndex} 
-    controls={false} indicator={false} interval>
+     controls={false} indicator={false} interval>
      {props.cursos.map(curso=>(<Carousel.Item>
       <img
          className = "d-block w-10"

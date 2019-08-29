@@ -16,13 +16,6 @@ class TodoForm extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  confirmationButton=(index, curso)=>{
-    this.setState({
-      
-    });
-
-  };
-
   handleClick = (curso)=> {
     this.setState({
       modalShown: curso,      
@@ -35,7 +28,7 @@ class TodoForm extends Component {
   }
 
   handleInputChange(e, index) {
-    const { value, name } = e.target;
+    const { value, name } = e.target; 
     console.log(value, name);
     this.setState({
       [index]: value
@@ -84,10 +77,12 @@ class TodoForm extends Component {
     });
 
     return (
-      <div className="card">
+     <div className="container">
+        <div className="row">
         {descriptions}
-        <Form onSubmit={this.handleSubmit} className="card-body">
-          <p>Selecciona tu curso</p>
+        <div className="form-group offset-md-1 align-self-center">
+         <Form onSubmit={this.handleSubmit} className="card-body">
+          <p><h5><strong>Selecciona tus cursos:</strong></h5></p>
 
           <Form.Group controlId="exampleForm.ControlSelect1">
             <Form.Control
@@ -133,16 +128,21 @@ class TodoForm extends Component {
               Detalles
             </Button>
           </Form.Group>
-          <Button variant="success">
-            Confirmar
+          <Button variant="dark">
+            Comprar ahora
           </Button>
 
         </Form>
+        </div>
+        <div className="col-md-6 offset-md-2 align-self-center">
         <ControlledCarousel activeIndex={this.state.cabeza} cursos={cabezas} />
         <ControlledCarousel activeIndex={this.state.cuerpo} cursos={torsos} />
         <ControlledCarousel activeIndex={this.state.pies} cursos={pies} />
-      </div>
-    );
+        </div>
+        </div>
+        </div>
+        
+      );
   }
 }
 
