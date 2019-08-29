@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-const images = require.context('../images', true);
+const images = require.context('../images/images', true);
 
 function ControlledCarousel(props) {
 return (

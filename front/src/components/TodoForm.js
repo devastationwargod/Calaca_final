@@ -66,11 +66,11 @@ class TodoForm extends Component {
     </Modal.Header>
   
     <Modal.Body>
-    Aqui va la descripcion
+    {curso.description}
     </Modal.Body>
   
     <Modal.Footer>
-      <Button variant="danger" onClick={()=>this.handleClick("")}>Close</Button>
+      <Button variant="warning" onClick={()=>this.handleClick("")}>Close</Button>
     </Modal.Footer>
   </Modal>
     );
@@ -92,7 +92,7 @@ class TodoForm extends Component {
               {optionsHead}
             </Form.Control>
             <Button
-              variant="danger"
+              variant="warning"
               onClick={()=>this.handleClick(cabezas[this.state.cabeza].curso)}
             >
               Detalles
@@ -107,7 +107,7 @@ class TodoForm extends Component {
               {optionsBody}
             </Form.Control>
             <Button
-              variant="danger"
+              variant="warning"
               onClick={() => this.handleClick(torsos[this.state.torso].curso)}
             >
               Detalles
@@ -123,7 +123,7 @@ class TodoForm extends Component {
             </Form.Control>
             <Button
               onClick={()=>this.handleClick(pies[this.state.pies].curso)}
-              variant="danger"
+              variant="warning"
             >
               Detalles
             </Button>
@@ -136,7 +136,7 @@ class TodoForm extends Component {
         </div>
         <div className="col-md-6 offset-md-2 align-self-center">
         <ControlledCarousel activeIndex={this.state.cabeza} cursos={cabezas} />
-        <ControlledCarousel activeIndex={this.state.cuerpo} cursos={torsos} />
+        <ControlledCarousel activeIndex={this.state.torso} cursos={torsos} />
         <ControlledCarousel activeIndex={this.state.pies} cursos={pies} />
         </div>
         </div>
